@@ -10,4 +10,6 @@ public interface SupplierService {
     void updateSupplier(SupplierDTO supplierDTO);
 
     List<SupplierDTO> getAllCustomer();
+
+    void deleteSupplier(String code);
 }

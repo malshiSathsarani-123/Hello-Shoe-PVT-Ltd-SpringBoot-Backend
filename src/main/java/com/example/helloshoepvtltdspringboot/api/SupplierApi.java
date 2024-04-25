@@ -30,4 +30,8 @@ public class SupplierApi {
     public List<SupplierDTO> getAllSuppliers(){
         return supplierService.getAllCustomer();
     }
+    @DeleteMapping("/{code}")
+    public void deleteSupplier(@PathVariable("code") String code){
+        supplierService.deleteSupplier(code);
+    }
 }

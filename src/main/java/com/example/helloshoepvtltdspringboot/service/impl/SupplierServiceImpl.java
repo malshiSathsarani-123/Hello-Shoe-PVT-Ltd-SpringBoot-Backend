@@ -46,6 +46,11 @@ public class SupplierServiceImpl implements SupplierService {
         return mapping.toSupplierDTOList(supplierDao.findAll());
     }
 
+    @Override
+    public void deleteSupplier(String code) {
+        supplierDao.deleteById(code);
+    }
+
     public String nextSupplierId() {
         String maxId = supplierDao.findMaxId();
         if (maxId != null){
