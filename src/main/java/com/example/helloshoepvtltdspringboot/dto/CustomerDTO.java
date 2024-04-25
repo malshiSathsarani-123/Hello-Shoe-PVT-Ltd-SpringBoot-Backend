@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -16,10 +17,10 @@ public class CustomerDTO {
     private String code;
     private String name;
     private Gender gender;
-    private Date joinDate;
+    private LocalDate joinDate;
     private Level level;
     private Integer totalPoints;
-    private Date dob;
+    private LocalDate dob;
     private String address;
     private String contact;
     private String email;

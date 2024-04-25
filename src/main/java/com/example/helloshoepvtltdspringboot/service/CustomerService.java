@@ -8,4 +8,6 @@ public interface CustomerService {
     void saveCustomer(CustomerDTO customerDTO);
 
     List<CustomerDTO> getAllCustomer();
+
+    void updateCustomer(CustomerDTO customerDTO);
 }

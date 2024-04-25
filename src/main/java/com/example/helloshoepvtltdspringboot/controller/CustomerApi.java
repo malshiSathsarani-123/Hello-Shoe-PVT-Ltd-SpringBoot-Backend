@@ -16,6 +16,7 @@ public class CustomerApi {
 
     @Autowired
     private final CustomerService customerService;
+
     @GetMapping
     List<CustomerDTO> getAllCustomer(){
         return customerService.getAllCustomer();
@@ -24,6 +25,10 @@ public class CustomerApi {
     @PostMapping
     public void saveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);
+    }
+    @PutMapping
+    public void updateCustomer(@RequestBody CustomerDTO customerDTO){
+        customerService.updateCustomer(customerDTO);
     }
 
 }
