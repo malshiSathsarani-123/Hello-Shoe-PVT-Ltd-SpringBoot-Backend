@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,11 @@ public class SupplierServiceImpl implements SupplierService {
         tmpSupplier.get().setContact1(supplierDTO.getContact1());
         tmpSupplier.get().setContact2(supplierDTO.getContact2());
         tmpSupplier.get().setEmail(supplierDTO.getEmail());
+    }
+
+    @Override
+    public List<SupplierDTO> getAllCustomer() {
+        return mapping.toSupplierDTOList(supplierDao.findAll());
     }
 
     public String nextSupplierId() {

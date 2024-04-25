@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/supplier")
 @CrossOrigin(origins = "http://localhost:63342")
@@ -24,4 +26,8 @@ public class SupplierApi {
         supplierService.updateSupplier(supplierDTO);
     }
 
+    @GetMapping
+    public List<SupplierDTO> getAllSuppliers(){
+        return supplierService.getAllCustomer();
+    }
 }
