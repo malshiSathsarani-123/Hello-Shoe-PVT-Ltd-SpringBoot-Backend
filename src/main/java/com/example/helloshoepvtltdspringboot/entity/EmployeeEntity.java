@@ -1,5 +1,6 @@
 package com.example.helloshoepvtltdspringboot.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -18,6 +19,7 @@ public class EmployeeEntity {
     @Id
     private String code;
     private String name;
+    @Column(columnDefinition = "LONGTEXT")
     private String profilePic;
     private Gender gender;
     private EmployeeStatus status;

@@ -28,4 +28,21 @@ public class EmployeeDTO {
     private String email;
     private String guardianName;
     private String emergencyContact;
+
+    public EmployeeDTO(String name, String profilePic, Gender gender, EmployeeStatus status, String designation, Role role, LocalDate dob, LocalDate dateOfJoin, String branchName, String address, String contact, String email, String guardianName, String emergencyContact) {
+        this.name = name;
+        this.profilePic = profilePic;
+        this.gender = gender;
+        this.status = status;
+        this.designation = designation;
+        this.role = role;
+        this.dob = dob;
+        this.dateOfJoin = dateOfJoin;
+        this.branchName = branchName;
+        this.address = address;
+        this.contact = contact;
+        this.email = email;
+        this.guardianName = guardianName;
+        this.emergencyContact = emergencyContact;
+    }
 }
