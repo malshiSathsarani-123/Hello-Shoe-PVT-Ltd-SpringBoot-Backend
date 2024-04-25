@@ -59,6 +59,7 @@ public class CustomerServiceImpl implements CustomerService {
     public String nextCustomerId() {
         String maxId = customerDao.findMaxId();
         if (maxId != null){
+            System.out.println(maxId);
             return generateNextCustomerId(maxId);
         }else {
             return "C-001";
@@ -66,9 +67,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private static String generateNextCustomerId(String lastCustomerId) {
-        String numericPart = lastCustomerId.substring(1);
+        String numericPart = lastCustomerId.substring(2);
         int nextNumericValue = Integer.parseInt(numericPart) + 1;
         String nextNumericPart = String.format("%03d", nextNumericValue);
+        System.out.println(nextNumericPart);
         return "C-" + nextNumericPart;
     }
 }

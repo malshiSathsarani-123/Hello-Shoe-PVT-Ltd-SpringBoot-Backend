@@ -4,4 +4,6 @@ import com.example.helloshoepvtltdspringboot.dto.SupplierDTO;
 
 public interface SupplierService {
     void saveSupplier(SupplierDTO supplierDTO);
+
+    void updateSupplier(SupplierDTO supplierDTO);
 }
