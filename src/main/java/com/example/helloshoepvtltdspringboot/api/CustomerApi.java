@@ -1,4 +1,4 @@
-package com.example.helloshoepvtltdspringboot.controller;
+package com.example.helloshoepvtltdspringboot.api;
 
 import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
 import com.example.helloshoepvtltdspringboot.service.CustomerService;
@@ -29,6 +29,10 @@ public class CustomerApi {
     @PutMapping
     public void updateCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.updateCustomer(customerDTO);
+    }
+    @DeleteMapping(value = "/{code}")
+    public void deleteCustomer(@PathVariable("code") String code){
+        customerService.deleteCustomer(code);
     }
 
 }
