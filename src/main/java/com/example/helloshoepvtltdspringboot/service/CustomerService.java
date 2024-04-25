@@ -10,4 +10,6 @@ public interface CustomerService {
     List<CustomerDTO> getAllCustomer();
 
     void updateCustomer(CustomerDTO customerDTO);
+
+    void deleteCustomer(String code);
 }

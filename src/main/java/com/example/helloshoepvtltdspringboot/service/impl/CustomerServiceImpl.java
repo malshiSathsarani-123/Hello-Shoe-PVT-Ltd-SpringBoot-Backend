@@ -51,6 +51,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
+    @Override
+    public void deleteCustomer(String code) {
+        customerDao.deleteById(code);
+    }
+
     public String nextCustomerId() {
         String maxId = customerDao.findMaxId();
         if (maxId != null){
