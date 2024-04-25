@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (maxId != null){
             return generateNextCustomerId(maxId);
         }else {
-            return "C001";
+            return "C-001";
         }
     }
 
@@ -69,6 +69,6 @@ public class CustomerServiceImpl implements CustomerService {
         String numericPart = lastCustomerId.substring(1);
         int nextNumericValue = Integer.parseInt(numericPart) + 1;
         String nextNumericPart = String.format("%03d", nextNumericValue);
-        return "C" + nextNumericPart;
+        return "C-" + nextNumericPart;
     }
 }
