@@ -1,8 +1,6 @@
 package com.example.helloshoepvtltdspringboot.api;
 
-import ch.qos.logback.core.status.StatusBase;
 import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
-import com.example.helloshoepvtltdspringboot.dto.SupplierDTO;
 import com.example.helloshoepvtltdspringboot.entity.EmployeeStatus;
 import com.example.helloshoepvtltdspringboot.entity.Gender;
 import com.example.helloshoepvtltdspringboot.entity.Role;
@@ -11,16 +9,15 @@ import com.example.helloshoepvtltdspringboot.util.UtilMatters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/employee")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:63342")
 public class EmployeeApi {
     @Autowired
     private final EmployeeService employeeService;
@@ -53,5 +50,9 @@ public class EmployeeApi {
         EmployeeDTO employeeDTO = new EmployeeDTO(name, base64ProPic, gender1, status1, designation, role1, dob1, dateOfJoin1, branchName, address, contact, email, guardianName, emergencyContact);
         employeeService.saveEmployee(employeeDTO);
 
+    }
+    @GetMapping
+    public List<EmployeeDTO> getAllEmployee(){
+        return employeeService.getAllEmployee();
     }
 }

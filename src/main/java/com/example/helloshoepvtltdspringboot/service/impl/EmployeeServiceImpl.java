@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -23,6 +25,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void saveEmployee(EmployeeDTO employeeDTO) {
         employeeDTO.setCode(nextEmployeeId());
         mapping.toEmployeeDTO(employeeDao.save(mapping.toEmployee(employeeDTO)));
+    }
+
+    @Override
+    public List<EmployeeDTO> getAllEmployee() {
+        return mapping.toEmployeeDTOList(employeeDao.findAll());
     }
 
     public String nextEmployeeId() {
