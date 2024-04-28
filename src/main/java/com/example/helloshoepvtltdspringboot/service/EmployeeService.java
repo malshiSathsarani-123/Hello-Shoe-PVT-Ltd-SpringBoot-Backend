@@ -10,4 +10,6 @@ public interface EmployeeService {
     List<EmployeeDTO> getAllEmployee();
 
     void updateEmployee(EmployeeDTO employeeDTO);
+
+    void deleteEmployee(String code);
 }

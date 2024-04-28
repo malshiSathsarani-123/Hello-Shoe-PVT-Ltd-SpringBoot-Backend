@@ -10,6 +10,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         tmpEmployee.get().setEmail(employeeDTO.getEmail());
         tmpEmployee.get().setGuardianName(employeeDTO.getGuardianName());
         tmpEmployee.get().setEmergencyContact(employeeDTO.getEmergencyContact());
+    }
+
+    @Override
+    public void deleteEmployee(String code) {
+        employeeDao.deleteById(code);
     }
 
     public String nextEmployeeId() {

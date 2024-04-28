@@ -80,4 +80,9 @@ public class EmployeeApi {
     public List<EmployeeDTO> getAllEmployee(){
         return employeeService.getAllEmployee();
     }
+
+    @DeleteMapping("/{code}")
+    public void deleteMapping(@PathVariable("code") String code){
+        employeeService.deleteEmployee(code);
+    }
 }
