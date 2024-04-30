@@ -2,9 +2,11 @@ package com.example.helloshoepvtltdspringboot.util;
 
 import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
 import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
+import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
 import com.example.helloshoepvtltdspringboot.dto.SupplierDTO;
 import com.example.helloshoepvtltdspringboot.entity.CustomerEntity;
 import com.example.helloshoepvtltdspringboot.entity.EmployeeEntity;
+import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
 import com.example.helloshoepvtltdspringboot.entity.SupplierEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -48,6 +50,17 @@ public class Mapping {
     }
     public List<EmployeeDTO> toEmployeeDTOList(List<EmployeeEntity> employeeEntities) {
         return mapper.map(employeeEntities, List.class);
+    }
+
+    //ItemMapping
+    public ItemDTO toItemDTO(ItemEntity itemEntity) {
+        return  mapper.map(itemEntity, ItemDTO.class);
+    }
+    public ItemEntity toItem(ItemDTO itemDTO) {
+        return  mapper.map(itemDTO, ItemEntity.class);
+    }
+    public List<ItemDTO> toItemDTOList(List<ItemEntity> itemEntityList) {
+        return mapper.map(itemEntityList, List.class);
     }
 //    //UserMapping
 //    public UserEntity toUserEntity(UserDTO userDTO) {

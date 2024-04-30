@@ -1,7 +1,5 @@
 package com.example.helloshoepvtltdspringboot.dto;
 
-import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
-import com.example.helloshoepvtltdspringboot.entity.SupplierEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,11 +25,7 @@ public class InventoryDTO {
     private Integer qty;
     private LocalDate buyDate;
 
-    @ManyToOne
-    @JoinColumn(name = "supplierCode",nullable = false)
-    private SupplierEntity supplierEntity;
-
-    @ManyToOne
-    @JoinColumn(name = "shoeCode",nullable = false)
-    private ItemEntity itemEntity;
+    private String supplierId;
+    private String supplierName;
+    private String shoeCode;
 }

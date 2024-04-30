@@ -16,6 +16,9 @@ import java.util.List;
 public class InventoryEntity {
     @Id
     private String code;
+    @ManyToOne
+    @JoinColumn(name = "shoeCode",nullable = false)
+    private ItemEntity itemEntity;
     private String description;
     @Column(columnDefinition = "LONGTEXT")
     private String pic;
@@ -32,8 +35,7 @@ public class InventoryEntity {
     @ManyToOne
     @JoinColumn(name = "supplierCode",nullable = false)
     private SupplierEntity supplierEntity;
+    private String supplierName;
 
-    @ManyToOne
-    @JoinColumn(name = "shoeCode",nullable = false)
-    private ItemEntity itemEntity;
+
 }
