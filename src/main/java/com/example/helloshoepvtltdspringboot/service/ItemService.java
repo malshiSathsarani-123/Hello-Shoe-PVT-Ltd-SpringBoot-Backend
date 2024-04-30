@@ -8,4 +8,6 @@ public interface ItemService {
     void saveItem(ItemDTO itemDTO);
 
     List<ItemDTO> getAllItem();
+
+    void deleteItem(String code);
 }

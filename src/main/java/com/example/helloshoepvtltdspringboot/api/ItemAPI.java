@@ -17,7 +17,6 @@ public class ItemAPI {
     private final ItemService itemService;
     @PostMapping
     public void saveItem(@RequestBody ItemDTO itemDTO){
-        System.out.println(itemDTO);
         itemService.saveItem(itemDTO);
     }
 
@@ -25,4 +24,10 @@ public class ItemAPI {
     public List<ItemDTO> getAllItem(){
         return itemService.getAllItem();
     }
+
+    @DeleteMapping("/{code}")
+    public void deleteItem(@PathVariable("code") String code){
+        itemService.deleteItem(code);
+    }
+
 }
