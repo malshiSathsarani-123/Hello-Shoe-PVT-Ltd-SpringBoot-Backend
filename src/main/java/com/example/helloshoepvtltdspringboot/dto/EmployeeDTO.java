@@ -1,8 +1,8 @@
 package com.example.helloshoepvtltdspringboot.dto;
 
-import com.example.helloshoepvtltdspringboot.entity.EmployeeStatus;
-import com.example.helloshoepvtltdspringboot.entity.Gender;
-import com.example.helloshoepvtltdspringboot.entity.Role;
+import com.example.helloshoepvtltdspringboot.enums.EmployeeStatus;
+import com.example.helloshoepvtltdspringboot.enums.Gender;
+import com.example.helloshoepvtltdspringboot.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

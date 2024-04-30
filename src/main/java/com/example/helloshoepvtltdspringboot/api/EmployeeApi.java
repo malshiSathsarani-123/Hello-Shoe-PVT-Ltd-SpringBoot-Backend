@@ -1,9 +1,9 @@
 package com.example.helloshoepvtltdspringboot.api;
 
 import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
-import com.example.helloshoepvtltdspringboot.entity.EmployeeStatus;
-import com.example.helloshoepvtltdspringboot.entity.Gender;
-import com.example.helloshoepvtltdspringboot.entity.Role;
+import com.example.helloshoepvtltdspringboot.enums.EmployeeStatus;
+import com.example.helloshoepvtltdspringboot.enums.Gender;
+import com.example.helloshoepvtltdspringboot.enums.Role;
 import com.example.helloshoepvtltdspringboot.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

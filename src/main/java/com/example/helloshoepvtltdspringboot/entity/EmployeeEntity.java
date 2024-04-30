@@ -1,5 +1,8 @@
 package com.example.helloshoepvtltdspringboot.entity;
 
+import com.example.helloshoepvtltdspringboot.enums.EmployeeStatus;
+import com.example.helloshoepvtltdspringboot.enums.Gender;
+import com.example.helloshoepvtltdspringboot.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,14 +1,13 @@
 package com.example.helloshoepvtltdspringboot.dto;
 
-import com.example.helloshoepvtltdspringboot.entity.Gender;
-import com.example.helloshoepvtltdspringboot.entity.Level;
+import com.example.helloshoepvtltdspringboot.enums.Gender;
+import com.example.helloshoepvtltdspringboot.enums.Level;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor

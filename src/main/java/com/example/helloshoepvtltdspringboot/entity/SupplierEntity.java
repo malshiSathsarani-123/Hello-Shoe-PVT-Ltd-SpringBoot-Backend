@@ -1,11 +1,12 @@
 package com.example.helloshoepvtltdspringboot.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.helloshoepvtltdspringboot.enums.Category;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +22,7 @@ public class SupplierEntity {
     private String contact1;
     private String contact2;
     private String email;
+
+    @OneToMany(mappedBy = "supplierEntity",cascade = CascadeType.ALL)
+    private List<InventoryEntity> inventoryEntities;
 }

@@ -1,5 +1,7 @@
 package com.example.helloshoepvtltdspringboot.entity;
 
+import com.example.helloshoepvtltdspringboot.enums.Gender;
+import com.example.helloshoepvtltdspringboot.enums.Level;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -9,7 +11,6 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
