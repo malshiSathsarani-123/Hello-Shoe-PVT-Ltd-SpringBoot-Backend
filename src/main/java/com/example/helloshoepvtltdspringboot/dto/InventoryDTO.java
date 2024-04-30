@@ -13,6 +13,7 @@ import java.time.LocalDate;
 public class InventoryDTO {
     @Id
     private String code;
+    private String shoeCode;
     private String description;
     private String pic;
     private String category;
@@ -27,5 +28,5 @@ public class InventoryDTO {
 
     private String supplierId;
     private String supplierName;
-    private String shoeCode;
+
 }

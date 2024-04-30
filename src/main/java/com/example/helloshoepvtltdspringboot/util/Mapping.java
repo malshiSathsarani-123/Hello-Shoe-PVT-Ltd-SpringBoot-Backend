@@ -1,13 +1,7 @@
 package com.example.helloshoepvtltdspringboot.util;
 
-import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
-import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
-import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
-import com.example.helloshoepvtltdspringboot.dto.SupplierDTO;
-import com.example.helloshoepvtltdspringboot.entity.CustomerEntity;
-import com.example.helloshoepvtltdspringboot.entity.EmployeeEntity;
-import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
-import com.example.helloshoepvtltdspringboot.entity.SupplierEntity;
+import com.example.helloshoepvtltdspringboot.dto.*;
+import com.example.helloshoepvtltdspringboot.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -61,6 +55,17 @@ public class Mapping {
     }
     public List<ItemDTO> toItemDTOList(List<ItemEntity> itemEntityList) {
         return mapper.map(itemEntityList, List.class);
+    }
+
+    //InventoryMapping
+    public InventoryDTO toInventoryDTO(InventoryEntity inventoryEntity) {
+        return  mapper.map(inventoryEntity, InventoryDTO.class);
+    }
+    public InventoryEntity toInventory(InventoryDTO inventoryDTO) {
+        return  mapper.map(inventoryDTO, InventoryEntity.class);
+    }
+    public List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> inventoryEntities) {
+        return mapper.map(inventoryEntities, List.class);
     }
 //    //UserMapping
 //    public UserEntity toUserEntity(UserDTO userDTO) {
