@@ -25,4 +25,14 @@ public class SupplierEntity {
 
     @OneToMany(mappedBy = "supplierEntity",cascade = CascadeType.ALL)
     private List<InventoryEntity> inventoryEntities;
+
+    public SupplierEntity(String code, String name, Category category, String address, String contact1, String contact2, String email) {
+        this.code = code;
+        this.name = name;
+        this.category = category;
+        this.address = address;
+        this.contact1 = contact1;
+        this.contact2 = contact2;
+        this.email = email;
+    }
 }

@@ -1,11 +1,9 @@
 package com.example.helloshoepvtltdspringboot.service.impl;
 
 import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
-import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
 import com.example.helloshoepvtltdspringboot.enums.ItemGender;
 import com.example.helloshoepvtltdspringboot.enums.Occasion;
 import com.example.helloshoepvtltdspringboot.enums.Verities;
-import com.example.helloshoepvtltdspringboot.exception.NotFoundException;
 import com.example.helloshoepvtltdspringboot.repositary.ItemDao;
 import com.example.helloshoepvtltdspringboot.service.ItemService;
 import com.example.helloshoepvtltdspringboot.util.Mapping;
@@ -15,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -94,12 +91,10 @@ public class ItemServiceImpl implements ItemService {
                 break;
         }
         return nextItemId(occasion1 + verities1 + gender1) ;
-
     }
 
     public String nextItemId(String concatString) {
         String maxId = itemDao.findMaxId();
-        System.out.println(maxId);
         if (maxId != null){
             return generateNextItemId(maxId,concatString);
         }else {
@@ -108,9 +103,6 @@ public class ItemServiceImpl implements ItemService {
     }
 
     private static String generateNextItemId(String lastItemId, String concatString) {
-//        int numberOfCharacters = concatString.length();
-//        String numericPart = lastItemId.substring(numberOfCharacters);
-//        System.out.println("numberOfCharacters"+numberOfCharacters);
         int nextNumericValue = Integer.parseInt(lastItemId) + 1;
         String nextNumericPart = String.format("%03d", nextNumericValue);
         return  concatString + nextNumericPart;

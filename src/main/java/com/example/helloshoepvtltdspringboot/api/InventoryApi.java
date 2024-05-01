@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/inventory")
 @RequiredArgsConstructor
@@ -15,7 +17,11 @@ public class InventoryApi {
     private final InventoryService inventoryService;
 
     @PostMapping
-    public void saveInventory(@RequestBody InventoryDTO inventoryDTO){
-        inventoryService.saveInventory(inventoryDTO);
+    public void saveInventory(@RequestBody List<InventoryDTO> inventoryDTOList){
+        inventoryService.saveInventory(inventoryDTOList);
     }
+//    @PostMapping
+//    public void saveInventory(@RequestBody InventoryDTO inventoryDTO){
+//        inventoryService.saveInventory(inventoryDTO);
+//    }
 }

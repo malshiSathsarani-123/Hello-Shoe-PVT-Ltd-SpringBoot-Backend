@@ -25,4 +25,16 @@ public class ItemEntity {
 
     @OneToMany(mappedBy = "itemEntity",cascade = CascadeType.ALL)
     private List<InventoryEntity> inventoryEntities;
+
+    public ItemEntity(String shoeCode, String description, ItemGender itemGender, Occasion occasion, Verities verities) {
+        this.shoeCode = shoeCode;
+        this.description = description;
+        this.itemGender = itemGender;
+        this.occasion = occasion;
+        this.verities = verities;
+    }
+
+    //    public ItemEntity(String shoeCode, String description, ItemGender itemGender, Occasion occasion, Verities verities) {
+//
+//    }
 }

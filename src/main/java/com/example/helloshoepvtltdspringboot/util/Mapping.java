@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -66,6 +67,11 @@ public class Mapping {
     }
     public List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> inventoryEntities) {
         return mapper.map(inventoryEntities, List.class);
+    }
+    public List<InventoryEntity> toInventoryEntityList(List<InventoryDTO> inventoryDTOList) {
+        return inventoryDTOList.stream()
+                .map(this::toInventory)
+                .collect(Collectors.toList());
     }
 //    //UserMapping
 //    public UserEntity toUserEntity(UserDTO userDTO) {
