@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 public class InventoryDTO {
-    @Id
     private String code;
     private String shoeCode;
     private String description;

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -42,10 +43,23 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public List<SupplierDTO> getAllCustomer() {
-        return mapping.toSupplierDTOList(supplierDao.findAll());
+    public List<SupplierDTO> getAllCustomer(){
+        List<SupplierEntity> supplierEntities = supplierDao.findAll();
+        return supplierEntities.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
-
+    private SupplierDTO convertToDTO(SupplierEntity supplierEntity) {
+        return new SupplierDTO(
+                supplierEntity.getCode(),
+                supplierEntity.getName(),
+                supplierEntity.getCategory(),
+                supplierEntity.getAddress(),
+                supplierEntity.getContact1(),
+                supplierEntity.getContact2(),
+                supplierEntity.getEmail()
+        );
+    }
     @Override
     public void deleteSupplier(String code) {
         supplierDao.deleteById(code);

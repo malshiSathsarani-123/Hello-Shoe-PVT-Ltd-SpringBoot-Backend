@@ -35,4 +35,8 @@ public class SupplierEntity {
         this.contact2 = contact2;
         this.email = email;
     }
+
+    public SupplierEntity(String code) {
+        this.code = code;
+    }
 }

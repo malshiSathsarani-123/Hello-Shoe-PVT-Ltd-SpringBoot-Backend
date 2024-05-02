@@ -8,4 +8,6 @@ public interface InventoryService {
     void saveInventory(InventoryDTO inventoryDTO);
 
     void saveInventory(List<InventoryDTO> inventoryDTOList);
+
+    Integer getSizeQty(String shoeCode, Integer size);
 }

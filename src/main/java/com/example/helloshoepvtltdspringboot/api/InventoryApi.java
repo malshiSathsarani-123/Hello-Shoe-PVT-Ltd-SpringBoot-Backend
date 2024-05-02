@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,11 @@ public class InventoryApi {
     @PostMapping
     public void saveInventory(@RequestBody List<InventoryDTO> inventoryDTOList){
         inventoryService.saveInventory(inventoryDTOList);
+    }
+    @GetMapping("/getSizeQty")
+    public Integer getSizeQty(@RequestParam String shoeCode, @RequestParam Integer size ){
+        System.out.println(shoeCode+size);
+        return inventoryService.getSizeQty(shoeCode,size);
     }
 //    @PostMapping
 //    public void saveInventory(@RequestBody InventoryDTO inventoryDTO){

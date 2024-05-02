@@ -34,7 +34,7 @@ public class ItemEntity {
         this.verities = verities;
     }
 
-    //    public ItemEntity(String shoeCode, String description, ItemGender itemGender, Occasion occasion, Verities verities) {
-//
-//    }
+    public ItemEntity(String shoeCode) {
+        this.shoeCode = shoeCode;
+    }
 }

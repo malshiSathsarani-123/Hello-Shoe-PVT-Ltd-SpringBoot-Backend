@@ -1,6 +1,9 @@
 package com.example.helloshoepvtltdspringboot.service.impl;
 
 import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
+import com.example.helloshoepvtltdspringboot.dto.SupplierDTO;
+import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
+import com.example.helloshoepvtltdspringboot.entity.SupplierEntity;
 import com.example.helloshoepvtltdspringboot.enums.ItemGender;
 import com.example.helloshoepvtltdspringboot.enums.Occasion;
 import com.example.helloshoepvtltdspringboot.enums.Verities;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -31,7 +35,19 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> getAllItem() {
-        return mapping.toItemDTOList(itemDao.findAll());
+        List<ItemEntity> itemEntityList = itemDao.findAll();
+        return itemEntityList.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+    private ItemDTO convertToDTO(ItemEntity itemEntity) {
+        return new ItemDTO(
+                itemEntity.getShoeCode(),
+                itemEntity.getDescription(),
+                itemEntity.getItemGender(),
+                itemEntity.getOccasion(),
+                itemEntity.getVerities()
+        );
     }
 
     @Override
