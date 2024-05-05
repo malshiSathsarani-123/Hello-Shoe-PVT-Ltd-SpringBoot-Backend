@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class EmployeeDTO {
+public class EmployeeDTO implements SuperDTO{
     private String code;
     private String name;
     private String profilePic;

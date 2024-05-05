@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SupplierDTO {
+public class SupplierDTO implements SuperDTO{
     private String code;
     private String name;
     private Category category;

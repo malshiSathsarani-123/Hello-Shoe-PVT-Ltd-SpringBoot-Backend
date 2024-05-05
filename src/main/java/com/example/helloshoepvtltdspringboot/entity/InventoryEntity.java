@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "inventory")
-public class InventoryEntity {
+public class InventoryEntity  implements SuperEntity{
     @Id
     private String code;
     @ManyToOne(cascade = CascadeType.ALL)

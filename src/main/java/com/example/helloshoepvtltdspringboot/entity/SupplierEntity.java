@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "supplier")
-public class SupplierEntity {
+public class SupplierEntity implements SuperEntity{
     @Id
     private String code;
     private String name;

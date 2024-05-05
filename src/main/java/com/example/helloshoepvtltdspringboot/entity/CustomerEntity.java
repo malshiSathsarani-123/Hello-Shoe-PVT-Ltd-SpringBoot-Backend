@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "customer")
-public class CustomerEntity {
+public class CustomerEntity implements SuperEntity{
     @Id
     private String code;
     private String name;

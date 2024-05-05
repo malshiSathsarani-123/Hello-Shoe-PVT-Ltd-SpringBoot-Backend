@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "item")
-public class ItemDTO {
+public class ItemDTO implements SuperDTO{
     @Id
     private String shoeCode;
     private String description;

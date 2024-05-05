@@ -3,10 +3,7 @@ package com.example.helloshoepvtltdspringboot.entity;
 import com.example.helloshoepvtltdspringboot.enums.EmployeeStatus;
 import com.example.helloshoepvtltdspringboot.enums.Gender;
 import com.example.helloshoepvtltdspringboot.enums.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +15,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "employee")
-public class EmployeeEntity {
+public class EmployeeEntity implements SuperEntity{
     @Id
     private String code;
     private String name;
@@ -36,4 +33,8 @@ public class EmployeeEntity {
     private String email;
     private String guardianName;
     private String emergencyContact;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userCode")
+    private UserEntity userEntity;
 }

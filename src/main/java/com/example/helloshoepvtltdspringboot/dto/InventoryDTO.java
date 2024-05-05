@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class InventoryDTO {
+public class InventoryDTO implements SuperDTO{
     private String code;
     private String shoeCode;
     private String description;

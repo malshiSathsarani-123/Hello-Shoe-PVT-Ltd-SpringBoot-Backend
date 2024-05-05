@@ -73,12 +73,12 @@ public class Mapping {
                 .map(this::toInventory)
                 .collect(Collectors.toList());
     }
-//    //UserMapping
-//    public UserEntity toUserEntity(UserDTO userDTO) {
-//        return mapper.map(userDTO, UserEntity.class);
-//    }
-//    public UserDTO toUserDTO(UserEntity userEntity) {
-//        return  mapper.map(userEntity, UserDTO.class);
-//    }
+    //UserMapping
+    public UserEntity toUserEntity(UserDTO userDTO) {
+        return mapper.map(userDTO, UserEntity.class);
+    }
+    public UserDTO toUserDTO(UserEntity userEntity) {
+        return  mapper.map(userEntity, UserDTO.class);
+    }
 
 }
