@@ -23,7 +23,6 @@ public class InventoryApi {
     }
     @GetMapping("/getSizeQty")
     public Integer getSizeQty(@RequestParam String shoeCode, @RequestParam Integer size ){
-        System.out.println(shoeCode+size);
         return inventoryService.getSizeQty(shoeCode,size);
     }
 //    @PostMapping

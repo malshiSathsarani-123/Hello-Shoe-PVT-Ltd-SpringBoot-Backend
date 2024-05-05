@@ -9,4 +9,10 @@ public interface InventoryDao extends JpaRepository<InventoryEntity,String> {
 
     @Query("SELECT SUM(i.qty) FROM InventoryEntity i WHERE i.itemEntity.shoeCode = :shoeCode AND i.size = :shoeSize")
     Integer getTotalQuantityByShoeCodeAndSize(@Param("shoeCode") String shoeCode, @Param("shoeSize") int shoeSize);
+
+    @Query("SELECT i FROM InventoryEntity i WHERE i.itemEntity.shoeCode = :shoeCode AND i.size = :size")
+    InventoryEntity findByShoeCodeAndSize(@Param("shoeCode") String shoeCode, @Param("size") int size);
+
+    @Query("SELECT MAX(i.code) FROM InventoryEntity i")
+    String findMaxId();
 }

@@ -35,7 +35,7 @@ public class InventoryServiceImpl implements InventoryService {
     private final Mapping mapping;
     @Override
     public void saveInventory(InventoryDTO inventoryDTO) {
-        inventoryDTO.setCode(UUID.randomUUID().toString());
+        inventoryDTO.setCode(nextInventoryId());
         InventoryEntity inventory = mapping.toInventory(inventoryDTO);
         ItemEntity referenceById = itemDao.getReferenceById(inventoryDTO.getShoeCode());
         SupplierEntity referenceById1 = supplierDao.getReferenceById(inventoryDTO.getSupplierId());
@@ -47,7 +47,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public void saveInventory(List<InventoryDTO> inventoryDTOList) {
         for (InventoryDTO inventoryDTO : inventoryDTOList) {
-            inventoryDTO.setCode(UUID.randomUUID().toString());
+            inventoryDTO.setCode(nextInventoryId());
             InventoryEntity inventory = mapping.toInventory(inventoryDTO);
             Optional<ItemEntity> byId = itemDao.findById(inventoryDTO.getShoeCode());
             ItemEntity itemEntity = new ItemEntity(inventoryDTO.getShoeCode(), byId.get().getDescription(), byId.get().getItemGender(), byId.get().getOccasion(), byId.get().getVerities());
@@ -55,12 +55,44 @@ public class InventoryServiceImpl implements InventoryService {
             Optional<SupplierEntity> byId1 = supplierDao.findById(inventoryDTO.getSupplierId());
             SupplierEntity supplierEntity = new SupplierEntity(inventoryDTO.getSupplierId(), byId1.get().getName(), byId1.get().getCategory(), byId1.get().getAddress(), byId1.get().getContact1(), byId1.get().getContact2(), byId1.get().getEmail());
             inventory.setSupplierEntity(supplierEntity);
-            inventoryDao.save(inventory);
+            saveInventory(inventory);
         }
+    }
+
+    private void saveInventory(InventoryEntity inventory) {
+        InventoryEntity byShoeCodeAndSize = inventoryDao.findByShoeCodeAndSize(inventory.getItemEntity().getShoeCode(), inventory.getSize());
+        if (byShoeCodeAndSize != null){
+            updateInventory(byShoeCodeAndSize.getCode(),inventory);
+            return;
+        }
+        inventoryDao.save(inventory);
+    }
+
+    private void updateInventory(String code, InventoryEntity inventory) {
+        Optional<InventoryEntity> byId = inventoryDao.findById(code);
+        Integer qty = byId.get().getQty();
+        Integer newQty = qty + inventory.getQty();
+        byId.get().setQty(newQty);
     }
 
     @Override
     public Integer getSizeQty(String shoeCode, Integer size) {
         return inventoryDao.getTotalQuantityByShoeCodeAndSize(shoeCode,size);
+    }
+
+    public String nextInventoryId() {
+        String maxId = inventoryDao.findMaxId();
+        if (maxId != null){
+            return generateNextInventoryId(maxId);
+        }else {
+            return "I-001";
+        }
+    }
+
+    private static String generateNextInventoryId(String lastInventoryId) {
+        String numericPart = lastInventoryId.substring(2);
+        int nextNumericValue = Integer.parseInt(numericPart) + 1;
+        String nextNumericPart = String.format("%03d", nextNumericValue);
+        return "I-" + nextNumericPart;
     }
 }

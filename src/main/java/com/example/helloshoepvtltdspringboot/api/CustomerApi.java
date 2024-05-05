@@ -13,7 +13,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:63342")
 @RequiredArgsConstructor
 public class CustomerApi {
-
     @Autowired
     private final CustomerService customerService;
 
