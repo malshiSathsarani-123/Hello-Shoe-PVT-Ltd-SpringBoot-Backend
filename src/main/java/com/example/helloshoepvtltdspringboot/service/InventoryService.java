@@ -10,4 +10,7 @@ public interface InventoryService {
     void saveInventory(List<InventoryDTO> inventoryDTOList);
 
     Integer getSizeQty(String shoeCode, Integer size);
+
+    List<InventoryDTO> getAllInventory();
+
 }

@@ -80,6 +80,11 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryDao.getTotalQuantityByShoeCodeAndSize(shoeCode,size);
     }
 
+    @Override
+    public List<InventoryDTO> getAllInventory() {
+        return mapping.toInventoryDTOList(inventoryDao.findAll());
+    }
+
     public String nextInventoryId() {
         String maxId = inventoryDao.findMaxId();
         if (maxId != null){

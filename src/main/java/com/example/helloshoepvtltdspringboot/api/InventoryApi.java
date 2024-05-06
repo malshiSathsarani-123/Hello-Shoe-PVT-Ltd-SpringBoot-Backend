@@ -1,5 +1,6 @@
 package com.example.helloshoepvtltdspringboot.api;
 
+import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
 import com.example.helloshoepvtltdspringboot.dto.InventoryDTO;
 import com.example.helloshoepvtltdspringboot.service.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,10 @@ public class InventoryApi {
     @GetMapping("/getSizeQty")
     public Integer getSizeQty(@RequestParam String shoeCode, @RequestParam Integer size ){
         return inventoryService.getSizeQty(shoeCode,size);
+    }
+    @GetMapping("/getAll")
+    public List<InventoryDTO> GetAllInventory(){
+        return inventoryService.getAllInventory();
     }
 //    @PostMapping
 //    public void saveInventory(@RequestBody InventoryDTO inventoryDTO){
