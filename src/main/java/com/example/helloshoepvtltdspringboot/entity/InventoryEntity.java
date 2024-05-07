@@ -32,6 +32,9 @@ public class InventoryEntity  implements SuperEntity{
     private Integer qty;
     private LocalDate buyDate;
 
+    @OneToMany(mappedBy = "inventoryEntity",cascade = CascadeType.ALL)
+    private List<OrderItemEntity> orderItemEntityList;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "supplierCode",nullable = false)
     private SupplierEntity supplierEntity;

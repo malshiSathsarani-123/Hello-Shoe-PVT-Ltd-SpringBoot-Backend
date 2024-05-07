@@ -2,15 +2,14 @@ package com.example.helloshoepvtltdspringboot.entity;
 
 import com.example.helloshoepvtltdspringboot.enums.Gender;
 import com.example.helloshoepvtltdspringboot.enums.Level;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,4 +29,7 @@ public class CustomerEntity implements SuperEntity{
     private String contact;
     private String email;
     private Timestamp recentPurchaseDateAndTime;
+
+    @OneToMany(mappedBy = "customerEntity",cascade = CascadeType.ALL)
+    private List<OrderEntity> orderEntities;
 }

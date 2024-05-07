@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -27,6 +28,8 @@ public class UserEntity implements UserDetails,SuperEntity {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany (mappedBy = "userEntity",cascade = CascadeType.ALL)
+    private List<OrderEntity> orderEntities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
