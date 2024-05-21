@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderItemDTO {
+public class OrderItemDTO implements SuperDTO {
     private String id;
     private String orderCode;
     private String shoeCode;

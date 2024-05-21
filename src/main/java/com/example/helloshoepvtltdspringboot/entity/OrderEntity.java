@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "orders")
-public class OrderEntity {
+public class OrderEntity implements SuperEntity{
     @Id
     private String code;
     @ManyToOne

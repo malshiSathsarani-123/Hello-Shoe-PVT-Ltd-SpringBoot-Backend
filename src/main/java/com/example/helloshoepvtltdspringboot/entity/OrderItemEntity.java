@@ -1,5 +1,6 @@
 package com.example.helloshoepvtltdspringboot.entity;
 
+import com.example.helloshoepvtltdspringboot.dto.SuperDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "orderItem")
-public class OrderItemEntity {
+public class OrderItemEntity implements SuperEntity {
     @Id
     private String id;
 

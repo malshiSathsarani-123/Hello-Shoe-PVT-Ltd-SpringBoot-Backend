@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderDTO {
+public class OrderDTO implements SuperDTO{
     private String code;
     private String customerName;
     private Double amount;
