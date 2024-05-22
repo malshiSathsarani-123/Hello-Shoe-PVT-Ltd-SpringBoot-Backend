@@ -18,4 +18,5 @@ public class OrderItemDTO implements SuperDTO {
     private Integer size;
     private Double unitPrice;
     private Integer qty;
+    private String pic;
 }

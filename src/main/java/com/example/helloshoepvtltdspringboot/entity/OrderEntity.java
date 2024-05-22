@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class OrderEntity implements SuperEntity{
     private String code;
     private String customerName;
     private Double amount;
-    private Date date;
+    private Double profit;
+    private LocalDate date;
     @Enumerated(EnumType.STRING)
     private Payment payment;
     private Integer point;

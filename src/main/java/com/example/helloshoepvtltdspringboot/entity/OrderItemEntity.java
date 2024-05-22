@@ -26,4 +26,6 @@ public class OrderItemEntity implements SuperEntity {
     private Integer size;
     private Double unitPrice;
     private Integer qty;
+    @Column(columnDefinition = "LONGTEXT")
+    private String pic;
 }

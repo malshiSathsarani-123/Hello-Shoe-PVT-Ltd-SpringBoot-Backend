@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -14,7 +15,8 @@ public class OrderDTO implements SuperDTO{
     private String code;
     private String customerName;
     private Double amount;
-    private Date date;
+    private Double profit;
+    private LocalDate date;
     private Payment payment;
     private Integer point;
     private String userName;
