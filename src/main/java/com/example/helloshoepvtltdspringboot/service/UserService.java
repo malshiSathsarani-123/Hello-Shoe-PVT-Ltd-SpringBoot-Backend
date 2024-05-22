@@ -12,4 +12,6 @@ public interface UserService {
     void save(UserDTO user);
 
     List<EmployeeDTO> getAllEmployee();
+
+    List<UserDTO> getAllUser();
 }

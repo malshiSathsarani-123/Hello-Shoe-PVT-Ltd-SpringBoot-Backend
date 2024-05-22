@@ -73,12 +73,37 @@ public class Mapping {
                 .map(this::toInventory)
                 .collect(Collectors.toList());
     }
+
+    //OrderMapping
+    public OrderEntity toOrderEntity(OrderDTO orderDTO) {
+        return mapper.map(orderDTO, OrderEntity.class);
+    }
+    public OrderDTO toOrderDTO(OrderEntity orderEntity) {
+        return  mapper.map(orderEntity, OrderDTO.class);
+    }
+
+
+    //OrderItemMapping
+    public OrderItemDTO toOrderItemDTO(OrderItemEntity orderItemEntity) {
+        return  mapper.map(orderItemEntity, OrderItemDTO.class);
+    }
+    public OrderItemEntity toOrderItem(OrderItemDTO orderItemDTO) {
+        return  mapper.map(orderItemDTO, OrderItemEntity.class);
+    }
+    public List<OrderItemDTO> toOrderItemDTOList(List<OrderItemEntity> orderItemEntityList) {
+        return mapper.map(orderItemEntityList, List.class);
+    }
+
     //UserMapping
     public UserEntity toUserEntity(UserDTO userDTO) {
         return mapper.map(userDTO, UserEntity.class);
     }
     public UserDTO toUserDTO(UserEntity userEntity) {
         return  mapper.map(userEntity, UserDTO.class);
+    }
+
+    public List<UserDTO> toUserDTOList(List<UserEntity> userEntities) {
+        return mapper.map(userEntities, List.class);
     }
 
 }

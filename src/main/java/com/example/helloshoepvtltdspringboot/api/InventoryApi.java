@@ -26,6 +26,12 @@ public class InventoryApi {
     public Integer getSizeQty(@RequestParam String shoeCode, @RequestParam Integer size ){
         return inventoryService.getSizeQty(shoeCode,size);
     }
+
+    @GetMapping("/getAllSizeQty")
+    public InventoryDTO getAllSizeQty(@RequestParam String shoeCode, @RequestParam Integer size ){
+        return inventoryService.getAllSizeQty(shoeCode,size);
+    }
+
     @GetMapping("/getAll")
     public List<InventoryDTO> GetAllInventory(){
         return inventoryService.getAllInventory();

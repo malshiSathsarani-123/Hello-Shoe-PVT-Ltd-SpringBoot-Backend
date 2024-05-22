@@ -13,4 +13,5 @@ public interface InventoryService {
 
     List<InventoryDTO> getAllInventory();
 
+    InventoryDTO getAllSizeQty(String shoeCode, Integer size);
 }

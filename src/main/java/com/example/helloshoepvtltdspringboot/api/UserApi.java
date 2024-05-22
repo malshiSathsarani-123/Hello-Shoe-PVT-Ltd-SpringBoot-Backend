@@ -3,6 +3,7 @@ package com.example.helloshoepvtltdspringboot.api;
 
 import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
 import com.example.helloshoepvtltdspringboot.dto.EmployeeDTO;
+import com.example.helloshoepvtltdspringboot.dto.UserDTO;
 import com.example.helloshoepvtltdspringboot.reqAndresp.response.JwtAuthResponse;
 import com.example.helloshoepvtltdspringboot.reqAndresp.secure.SignIn;
 import com.example.helloshoepvtltdspringboot.reqAndresp.secure.SignUp;
@@ -25,8 +26,13 @@ public class UserApi {
    @Autowired
    private final UserService userService;
     @GetMapping("/getEmployee")
-    List<EmployeeDTO> getAllCustomer(){
+    List<EmployeeDTO> getAllEmployee(){
         return userService.getAllEmployee();
+    }
+
+    @GetMapping("/getUser")
+    List<UserDTO> getAllUser(){
+        return userService.getAllUser();
     }
 
     @PostMapping("/signup")

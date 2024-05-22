@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -83,6 +82,11 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public List<InventoryDTO> getAllInventory() {
         return mapping.toInventoryDTOList(inventoryDao.findAll());
+    }
+
+    @Override
+    public InventoryDTO getAllSizeQty(String shoeCode, Integer size) {
+        return mapping.toInventoryDTO(inventoryDao.findByShoeCodeAndSize(shoeCode,size));
     }
 
     public String nextInventoryId() {

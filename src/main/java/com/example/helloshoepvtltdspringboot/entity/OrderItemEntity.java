@@ -14,13 +14,12 @@ import lombok.NoArgsConstructor;
 public class OrderItemEntity implements SuperEntity {
     @Id
     private String id;
-
+    private String shoeCode;
     @ManyToOne
     @JoinColumn(name = "orderCode")
     private OrderEntity orderEntity;
 
     @ManyToOne
-    @JoinColumn(name = "shoeCode")
     private InventoryEntity inventoryEntity;
 
     private String description;

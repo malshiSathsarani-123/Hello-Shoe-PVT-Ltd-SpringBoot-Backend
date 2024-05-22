@@ -17,19 +17,18 @@ import java.util.List;
 public class OrderEntity implements SuperEntity{
     @Id
     private String code;
-    @ManyToOne
-    @JoinColumn(name = "customerName")
-    private CustomerEntity customerEntity;
+    private String customerName;
     private Double amount;
     private Date date;
     @Enumerated(EnumType.STRING)
     private Payment payment;
     private Integer point;
+    private String userName;
 
     @ManyToOne
-    @JoinColumn(name = "userName")
+    private CustomerEntity customerEntity;
+    @ManyToOne
     private UserEntity userEntity;
-
     @OneToMany(mappedBy = "orderEntity",cascade = CascadeType.ALL)
     private List<OrderItemEntity> orderItemEntityList;
 }
