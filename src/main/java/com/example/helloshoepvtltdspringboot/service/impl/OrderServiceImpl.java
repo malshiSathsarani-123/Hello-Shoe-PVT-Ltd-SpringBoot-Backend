@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -39,6 +40,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void purchaseOrder(OrderDTO orderDTO, List<OrderItemDTO> orderItemDTOS, String customerCode) {
         OrderEntity orderEntity = mapping.toOrderEntity(orderDTO);
+        Optional<CustomerEntity> byId = customerDao.findById(customerCode);
+        CustomerEntity customerEntity = new CustomerEntity(customerCode, byId.get().getName(), byId.get().getGender(), byId.get().getJoinDate(), byId.get().getLevel(), byId.get().getTotalPoints(), byId.get().getDob(), byId.get().getAddress(), byId.get().getContact(), byId.get().getEmail(), byId.get().getRecentPurchaseDateAndTime());
+        orderEntity.setCustomerEntity(customerEntity);
         orderDao.save(orderEntity);
         for (OrderItemDTO orderItemDTO : orderItemDTOS) {
             orderItemDTO.setId(nextOrderItemId());
@@ -71,6 +75,56 @@ public class OrderServiceImpl implements OrderService {
         }else {
             return "O-001";
         }
+    }
+
+    @Override
+    public List<OrderDTO> getAllInventory() {
+        List<OrderEntity> orderEntityList = orderDao.findAll();
+        return orderEntityList.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getSizesByOrderCode(String orderCode) {
+        return orderItemDao.findSizesByOrderCode(orderCode);
+    }
+
+    @Override
+    public Object getSizesByOrderCodeAndShoeCode(String orderCode, String shoeCode) {
+        return orderItemDao.findAllByOrderCodeAndShoeCode(orderCode,shoeCode);
+    }
+
+    @Override
+    public void returnOrder(String orderCode, String customerCode, Integer point, List<OrderItemDTO> orderItemDTOS) {
+        for (OrderItemDTO orderItemDTO : orderItemDTOS) {
+            InventoryEntity byShoeCodeAndSize = inventoryDao.findByShoeCodeAndSize(orderItemDTO.getShoeCode(), orderItemDTO.getSize());
+            Integer qty = byShoeCodeAndSize.getQty();
+            Integer newQty = qty + orderItemDTO.getQty();
+            inventoryDao.updateQtyByShoeCodeAndSize(orderItemDTO.getShoeCode(),orderItemDTO.getSize(),newQty);
+            updateOrderQty(orderItemDTO);
+        }
+//        updateCustomerPoint(customerCode,point);
+    }
+
+    private void updateOrderQty(OrderItemDTO orderItemDTO) {
+        Integer qty = orderItemDao.getOrderQty(orderItemDTO.getId());
+        Integer newQty = qty - orderItemDTO.getQty();
+        orderItemDao.updateQty(newQty,orderItemDTO.getId());
+    }
+
+    private OrderDTO convertToDTO(OrderEntity orderEntity) {
+        return new OrderDTO(
+                orderEntity.getCode(),
+                orderEntity.getCustomerName(),
+                orderEntity.getCustomerEntity().getCode(),
+                orderEntity.getAmount(),
+                orderEntity.getProfit(),
+                orderEntity.getDate(),
+                orderEntity.getPayment(),
+                orderEntity.getPoint(),
+                orderEntity.getUserName()
+        );
     }
 
     private static String generateNextOrderId(String lastOrderId) {

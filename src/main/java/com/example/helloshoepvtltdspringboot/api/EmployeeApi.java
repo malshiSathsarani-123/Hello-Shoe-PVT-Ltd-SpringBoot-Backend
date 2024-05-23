@@ -8,6 +8,7 @@ import com.example.helloshoepvtltdspringboot.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class EmployeeApi {
     private final EmployeeService employeeService;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     public void saveEmployee(@RequestPart("name") String name,
                              @RequestPart("profilePic") String profilePic,
                              @RequestPart("gender") String gender,
@@ -50,6 +52,7 @@ public class EmployeeApi {
     }
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     public void updateEmployee(@RequestPart("code") String code,
                                @RequestPart("name") String name,
                              @RequestPart("profilePic") String profilePic,
@@ -82,6 +85,7 @@ public class EmployeeApi {
     }
 
     @DeleteMapping("/{code}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteMapping(@PathVariable("code") String code){
         employeeService.deleteEmployee(code);
     }

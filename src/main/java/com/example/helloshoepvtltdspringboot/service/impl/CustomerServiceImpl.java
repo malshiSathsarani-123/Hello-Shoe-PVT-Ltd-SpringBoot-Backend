@@ -1,6 +1,8 @@
 package com.example.helloshoepvtltdspringboot.service.impl;
 
+import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
 import com.example.helloshoepvtltdspringboot.entity.CustomerEntity;
+import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
 import com.example.helloshoepvtltdspringboot.exception.NotFoundException;
 import com.example.helloshoepvtltdspringboot.repositary.CustomerDao;
 import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -31,7 +34,26 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAllCustomer() {
-        return mapping.toCustomerDTOList(customerDao.findAll());
+        List<CustomerEntity> customerEntities = customerDao.findAll();
+        return customerEntities.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private CustomerDTO convertToDTO(CustomerEntity customerEntity) {
+        return new CustomerDTO(
+                customerEntity.getCode(),
+                customerEntity.getName(),
+                customerEntity.getGender(),
+                customerEntity.getJoinDate(),
+                customerEntity.getLevel(),
+                customerEntity.getTotalPoints(),
+                customerEntity.getDob(),
+                customerEntity.getAddress(),
+                customerEntity.getContact(),
+                customerEntity.getEmail(),
+                customerEntity.getRecentPurchaseDateAndTime()
+        );
     }
 
     @Override

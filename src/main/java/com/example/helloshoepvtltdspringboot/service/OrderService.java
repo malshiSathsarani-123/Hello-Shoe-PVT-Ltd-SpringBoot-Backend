@@ -9,4 +9,13 @@ public interface OrderService {
     void purchaseOrder(OrderDTO orderDTO, List<OrderItemDTO> orderItemDTOS, String customerCode);
 
     String nextOrderId();
+
+    List<OrderDTO> getAllInventory();
+
+    List<String> getSizesByOrderCode(String orderCode);
+
+    Object getSizesByOrderCodeAndShoeCode(String orderCode, String shoeCode);
+
+    void returnOrder(String orderCode, String customerCode, Integer point, List<OrderItemDTO> orderItemDTOS);
+
 }

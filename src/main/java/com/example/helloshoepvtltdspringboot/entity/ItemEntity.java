@@ -19,6 +19,8 @@ public class ItemEntity implements SuperEntity {
     @Id
     private String shoeCode;
     private String description;
+    @Column(columnDefinition = "LONGTEXT")
+    private String pic;
     private ItemGender itemGender;
     private Occasion occasion;
     private Verities verities;

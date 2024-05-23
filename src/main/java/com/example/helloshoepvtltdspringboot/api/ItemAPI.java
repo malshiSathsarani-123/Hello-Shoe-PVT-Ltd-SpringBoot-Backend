@@ -4,6 +4,7 @@ import com.example.helloshoepvtltdspringboot.dto.ItemDTO;
 import com.example.helloshoepvtltdspringboot.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class ItemAPI {
     }
 
     @DeleteMapping("/{code}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteItem(@PathVariable("code") String code){
         itemService.deleteItem(code);
     }

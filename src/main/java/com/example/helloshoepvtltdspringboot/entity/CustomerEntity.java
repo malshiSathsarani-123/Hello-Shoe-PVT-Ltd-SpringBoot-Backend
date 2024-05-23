@@ -32,4 +32,18 @@ public class CustomerEntity implements SuperEntity{
 
     @OneToMany(mappedBy = "customerEntity",cascade = CascadeType.ALL)
     private List<OrderEntity> orderEntities;
+
+    public CustomerEntity(String code, String name, Gender gender, LocalDate joinDate, Level level, Integer totalPoints, LocalDate dob, String address, String contact, String email, Timestamp recentPurchaseDateAndTime) {
+        this.code = code;
+        this.name = name;
+        this.gender = gender;
+        this.joinDate = joinDate;
+        this.level = level;
+        this.totalPoints = totalPoints;
+        this.dob = dob;
+        this.address = address;
+        this.contact = contact;
+        this.email = email;
+        this.recentPurchaseDateAndTime = recentPurchaseDateAndTime;
+    }
 }

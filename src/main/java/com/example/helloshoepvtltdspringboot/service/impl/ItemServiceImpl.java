@@ -44,6 +44,7 @@ public class ItemServiceImpl implements ItemService {
         return new ItemDTO(
                 itemEntity.getShoeCode(),
                 itemEntity.getDescription(),
+                itemEntity.getPic(),
                 itemEntity.getItemGender(),
                 itemEntity.getOccasion(),
                 itemEntity.getVerities()

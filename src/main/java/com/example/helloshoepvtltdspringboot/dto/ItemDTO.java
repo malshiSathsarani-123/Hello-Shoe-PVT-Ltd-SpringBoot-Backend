@@ -19,6 +19,7 @@ public class ItemDTO implements SuperDTO{
     @Id
     private String shoeCode;
     private String description;
+    private String pic;
     private ItemGender itemGender;
     private Occasion occasion;
     private Verities verities;

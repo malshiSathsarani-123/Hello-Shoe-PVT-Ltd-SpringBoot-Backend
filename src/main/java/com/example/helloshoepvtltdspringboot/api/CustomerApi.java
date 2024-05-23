@@ -4,6 +4,7 @@ import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
 import com.example.helloshoepvtltdspringboot.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,6 @@ public class CustomerApi {
     List<CustomerDTO> getAllCustomer(){
         return customerService.getAllCustomer();
     }
-
     @PostMapping
     public void saveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);

@@ -14,6 +14,7 @@ import java.util.Date;
 public class OrderDTO implements SuperDTO{
     private String code;
     private String customerName;
+    private String customerId;
     private Double amount;
     private Double profit;
     private LocalDate date;

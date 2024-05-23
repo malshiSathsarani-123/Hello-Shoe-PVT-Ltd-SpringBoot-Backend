@@ -5,6 +5,7 @@ import com.example.helloshoepvtltdspringboot.dto.InventoryDTO;
 import com.example.helloshoepvtltdspringboot.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class InventoryApi {
     private final InventoryService inventoryService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public void saveInventory(@RequestBody List<InventoryDTO> inventoryDTOList){
         inventoryService.saveInventory(inventoryDTOList);
     }

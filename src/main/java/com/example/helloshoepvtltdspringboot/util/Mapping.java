@@ -82,6 +82,9 @@ public class Mapping {
         return  mapper.map(orderEntity, OrderDTO.class);
     }
 
+    public List<OrderDTO> toOrderDTOList(List<OrderEntity> orderEntityList) {
+        return mapper.map(orderEntityList, List.class);
+    }
 
     //OrderItemMapping
     public OrderItemDTO toOrderItemDTO(OrderItemEntity orderItemEntity) {
