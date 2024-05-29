@@ -3,6 +3,7 @@ package com.example.helloshoepvtltdspringboot.service.impl;
 import com.example.helloshoepvtltdspringboot.dto.OrderDTO;
 import com.example.helloshoepvtltdspringboot.dto.OrderItemDTO;
 import com.example.helloshoepvtltdspringboot.entity.*;
+import com.example.helloshoepvtltdspringboot.enums.Level;
 import com.example.helloshoepvtltdspringboot.exception.NotFoundException;
 import com.example.helloshoepvtltdspringboot.repositary.*;
 import com.example.helloshoepvtltdspringboot.service.OrderService;
@@ -55,16 +56,24 @@ public class OrderServiceImpl implements OrderService {
             Integer newQty = qty - orderItem.getQty();
             inventoryDao.updateQtyByShoeCodeAndSize(orderItem.getShoeCode(),orderItem.getSize(),newQty);
         }
-        updateCustomerPoint(customerCode,orderEntity.getPoint());
+        updateCustomerData(customerCode,orderEntity.getPoint());
     }
 
 
 
-    private void updateCustomerPoint(String customerCode, Integer point) {
+    private void updateCustomerData(String customerCode, Integer point) {
         Optional<CustomerEntity> tmpCustomer = customerDao.findById(customerCode);
         if (!tmpCustomer.isPresent())throw new NotFoundException("CUSTOMER NOT FOUND");
         Integer totalPoints = tmpCustomer.get().getTotalPoints();
-        tmpCustomer.get().setTotalPoints(totalPoints+point);
+        Integer newTotal = totalPoints+point;
+        tmpCustomer.get().setTotalPoints(newTotal);
+        if (newTotal >= 50 && newTotal < 100){
+            tmpCustomer.get().setLevel(Level.BRONZE);
+        }if (newTotal >= 100 && newTotal < 200){
+            tmpCustomer.get().setLevel(Level.SILVER);
+        }if (newTotal >= 200){
+            tmpCustomer.get().setLevel(Level.GOLD);
+        }
     }
 
     @Override
