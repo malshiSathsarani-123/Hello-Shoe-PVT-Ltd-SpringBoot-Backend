@@ -1,6 +1,8 @@
 package com.example.helloshoepvtltdspringboot.service.impl;
 
+import com.example.helloshoepvtltdspringboot.dto.CustomerDTO;
 import com.example.helloshoepvtltdspringboot.dto.InventoryDTO;
+import com.example.helloshoepvtltdspringboot.entity.CustomerEntity;
 import com.example.helloshoepvtltdspringboot.entity.InventoryEntity;
 import com.example.helloshoepvtltdspringboot.entity.ItemEntity;
 import com.example.helloshoepvtltdspringboot.entity.SupplierEntity;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -81,7 +84,10 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> getAllInventory() {
-        return mapping.toInventoryDTOList(inventoryDao.findAll());
+        List<InventoryEntity> inventoryEntities = inventoryDao.findAll();
+        return inventoryEntities.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -103,5 +109,13 @@ public class InventoryServiceImpl implements InventoryService {
         int nextNumericValue = Integer.parseInt(numericPart) + 1;
         String nextNumericPart = String.format("%03d", nextNumericValue);
         return "I-" + nextNumericPart;
+    }
+
+    private InventoryDTO convertToDTO(InventoryEntity inventoryEntity) {
+        return new InventoryDTO(
+                inventoryEntity.getItemEntity().getShoeCode(),
+                inventoryEntity.getSize(),
+                inventoryEntity.getQty()
+        );
     }
 }

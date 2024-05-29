@@ -28,4 +28,9 @@ public class InventoryDTO implements SuperDTO{
     private String supplierId;
     private String supplierName;
 
+    public InventoryDTO(String shoeCode, int size, Integer qty) {
+        this.shoeCode = shoeCode;
+        this.size = size;
+        this.qty = qty;
+    }
 }
